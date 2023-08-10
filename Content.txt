@@ -1,0 +1,125 @@
+281. App Preview
+2min
+
+282. Add Project to GitHub
+9min
+
+283. Change Theme
+9min
+
+284. Custom App Bar
+15min
+
+285. Custom Note Item
+27min
+
+286. Notes list view
+12min
+
+287. Floating Action Button
+4min
+
+288. Show modal bottom sheet
+7min
+
+289. Add border Radius to bottom sheet
+4min
+
+290. Custom text field
+11min
+
+291. add text field to add note bottom sheet
+3min
+
+292. Finish add note bottom sheet
+11min
+
+293. Creates edit note view
+4min
+
+294. Add custom app bar to edit note view
+7min
+
+295. Edit notes view done
+4min
+
+296. Creates notes view model
+4min
+
+297. Add Hive package
+7min
+
+298. Hive overview
+5min
+
+299. Generate Type Adapter
+7min
+
+300. Init Hive
+4min
+
+301. Validate user input
+13min
+
+302. Create add note cubit state
+9min
+
+303. Register note type adapter
+4min
+
+304. Create add note Method
+10min
+
+305. Provide add note cubit
+4min
+
+306. Add cubit to Bottom Sheet
+12min
+
+307. Add Simple Bloc Observer
+3min
+
+308. Trigger add note cubit
+16min
+
+309. Bloc Provider
+7min
+
+310. Fix issue part one
+14min
+
+311. Fix issue part two
+7min
+
+312. Create notes cubit
+10min
+
+313. Display data part one
+13min
+
+314. Display data part two
+7min
+
+315. Format Date
+6min
+
+316. Delete note
+5min
+
+317. Refresh notes
+10min
+
+318. Edit note done
+18min
+
+319. Create colors list part one
+7min
+
+320. Create colors list part two
+15min
+
+321. Add note bottom sheet done
+5min
+
+322. Add colors list view to edit note view
+22min
