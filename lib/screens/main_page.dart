@@ -9,8 +9,13 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
+      ),
+      body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [

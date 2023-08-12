@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ItemContainer extends StatelessWidget {
-  const ItemContainer({super.key});
+  const ItemContainer({required this.color,super.key});
 
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(right: 15, left: 15, top: 20, bottom: 20),
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: color,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
