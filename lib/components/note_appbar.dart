@@ -14,6 +14,7 @@ class NoteAppbar extends StatelessWidget {
             "NOTES",
             style: TextStyle(
               fontSize: 30,
+              fontWeight: FontWeight.bold,
             ),
           ),
           Container(

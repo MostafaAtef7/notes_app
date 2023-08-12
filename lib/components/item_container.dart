@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ItemContainer extends StatelessWidget {
-  const ItemContainer({required this.color,super.key});
+  const ItemContainer({required this.color, super.key});
 
   final Color? color;
   @override
@@ -19,6 +19,7 @@ class ItemContainer extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontSize: 30,
+              fontWeight: FontWeight.bold,
             ),
           ),
           subtitle: Padding(
@@ -26,7 +27,8 @@ class ItemContainer extends StatelessWidget {
             child: Text(
               "Build your career in Android using Flutter",
               style: TextStyle(
-                color: Colors.black.withOpacity(0.7),
+                color: Colors.black.withOpacity(0.6),
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -41,6 +43,7 @@ class ItemContainer extends StatelessWidget {
             "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
             style: TextStyle(
               color: Colors.black.withOpacity(0.7),
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
