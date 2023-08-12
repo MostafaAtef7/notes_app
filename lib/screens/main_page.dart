@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/item_container.dart';
+import '../components/item_list.dart';
 import '../components/note_appbar.dart';
 
 class MainPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class MainPage extends StatelessWidget {
         child: Column(
           children: [
             NoteAppbar(),
-            ItemContainer(),
+            ItemList(),
           ],
         ),
       ),
