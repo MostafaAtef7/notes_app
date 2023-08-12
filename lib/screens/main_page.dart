@@ -15,8 +15,16 @@ class MainPage extends StatelessWidget {
         onPressed: () {
           //display bottom sheet that float on scaffold
           showModalBottomSheet(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20)),
+              ),
               context: context,
               builder: (context) {
+                /*there is no build method in this area so if we return widget 
+                  and want to edit it we must restart the app so best way to 
+                  return StatelessWidget class */
                 return const AddNote();
               });
         },
