@@ -4,7 +4,7 @@ class NoteAppbar extends StatelessWidget {
   const NoteAppbar({super.key, required this.title, required this.icon});
 
   final String title;
-  final IconData icon;
+  final Icon icon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,9 +26,10 @@ class NoteAppbar extends StatelessWidget {
               color: const Color.fromARGB(255, 70, 70, 70),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(
-              icon,
-              size: 30,
+            child: IconButton(
+              onPressed: (){},
+              icon: icon,
+              iconSize: 30,
             ),
           ),
         ],

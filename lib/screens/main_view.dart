@@ -35,7 +35,10 @@ class MainView extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            NoteAppbar(title: "NOTES", icon: Icons.search,),
+            NoteAppbar(
+              title: "NOTES",
+              icon: Icon(Icons.check),
+            ),
             ItemList(),
           ],
         ),

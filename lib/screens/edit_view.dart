@@ -11,17 +11,11 @@ class EditView extends StatelessWidget {
     return const Scaffold(
       body: Column(
         children: [
-          NoteAppbar(title: "Edit Note", icon: Icons.check),
+          NoteAppbar(title: "Edit Note", icon: Icon(Icons.check)),
           TextFieldSheet(hint: "Title"),
           TextFieldSheet(
             hint: "Content",
             maxLines: 5,
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          CunstomButton(
-            text: "Edit",
           ),
         ],
       ),

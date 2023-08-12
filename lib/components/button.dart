@@ -11,7 +11,7 @@ class CunstomButton extends StatelessWidget {
       height: 55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.orange,
+        color: Color.fromARGB(255, 62, 182, 238),
       ),
       child: Center(
         child: Text(
