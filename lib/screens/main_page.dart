@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/item_container.dart';
+import '../components/add_note_button_sheet.dart';
+
 import '../components/item_list.dart';
 import '../components/note_appbar.dart';
 
@@ -11,7 +12,14 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          //display bottom sheet that float on scaffold
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return const AddNote();
+              });
+        },
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
       ),

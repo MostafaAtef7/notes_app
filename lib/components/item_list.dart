@@ -15,7 +15,10 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
+      child: 
+      Padding(
+        padding: EdgeInsets.only(bottom: 20),
+        child:ListView.builder(
         itemCount: 6453312,
         itemBuilder: (context, index) {
           return Padding(
@@ -23,6 +26,7 @@ class ItemList extends StatelessWidget {
             child: ItemContainer(color: color[index % color.length]),
           );
         },
+      ),
       ),
     );
   }
