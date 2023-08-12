@@ -25,7 +25,9 @@ class AddNote extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          CunstomButton(),
+          CunstomButton(
+            text: "Add",
+          ),
           SizedBox(
             height: 50,
           ),

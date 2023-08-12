@@ -5,8 +5,8 @@ import '../components/add_note_button_sheet.dart';
 import '../components/item_list.dart';
 import '../components/note_appbar.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class MainView extends StatelessWidget {
+  const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class MainPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            NoteAppbar(),
+            NoteAppbar(title: "NOTES", icon: Icons.search,),
             ItemList(),
           ],
         ),
