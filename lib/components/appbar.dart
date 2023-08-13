@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NoteAppbar extends StatelessWidget {
-  const NoteAppbar({super.key, required this.title, required this.icon});
+  const NoteAppbar({super.key, required this.title, required this.icon, this.onPressed});
 
+  final void Function()? onPressed;
   final String title;
   final Icon icon;
   @override
@@ -27,7 +28,7 @@ class NoteAppbar extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: IconButton(
-              onPressed: (){},
+              onPressed: onPressed,
               icon: icon,
               iconSize: 30,
             ),

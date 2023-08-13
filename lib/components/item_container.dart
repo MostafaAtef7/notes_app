@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_12/cubits/notes/notes_cubit.dart';
 import 'package:notes_app_12/models/note_model.dart';
+import 'package:notes_app_12/screens/edit_view.dart';
 
 class ItemContainer extends StatelessWidget {
   const ItemContainer({required this.color, super.key, required this.note});
@@ -12,7 +13,12 @@ class ItemContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, 'editView');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EditView(
+                      note: note,
+                    )));
       },
       child: Container(
         padding:

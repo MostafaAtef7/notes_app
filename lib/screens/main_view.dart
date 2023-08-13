@@ -15,13 +15,13 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-
   // this make all notes get when just the app open
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).fetchAllnotes();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +53,7 @@ class _MainViewState extends State<MainView> {
           children: [
             NoteAppbar(
               title: "NOTES",
-              icon: Icon(Icons.check),
+              icon: Icon(Icons.search),
             ),
             ItemList(),
           ],

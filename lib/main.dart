@@ -23,6 +23,7 @@ void main() async {
 class NoteApp extends StatelessWidget {
   const NoteApp({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,7 +36,6 @@ class NoteApp extends StatelessWidget {
         ),
         routes: {
           'mainView': (context) => const MainView(),
-          'editView': (context) => const EditView(),
         },
         initialRoute: 'mainView',
       ),

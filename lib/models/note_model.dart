@@ -10,9 +10,9 @@ part 'note_model.g.dart';
 class NoteModel extends HiveObject {
   // if we use Objects in this field we must create type adapter for it
   @HiveField(0)
-  final String title;
+  String title;
   @HiveField(1)
-  final String content;
+  String content;
   @HiveField(2)
   final String date;
   NoteModel({required this.title, required this.content, required this.date});
