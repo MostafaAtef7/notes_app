@@ -8,6 +8,7 @@ part 'note_model.g.dart';
    because database can just accept primitive data type like int double string */
 @HiveType(typeId: 0)
 class NoteModel extends HiveObject {
+  // if we use Objects in this field we must create type adapter for it
   @HiveField(0)
   final String title;
   @HiveField(1)

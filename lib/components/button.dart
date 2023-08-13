@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CunstomButton extends StatelessWidget {
-  const CunstomButton({super.key, required this.text, this.onTap});
+  const CunstomButton(
+      {super.key, required this.text, this.onTap, this.loading = false});
   final String text;
   final void Function()? onTap;
+  final bool loading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,14 +19,22 @@ class CunstomButton extends StatelessWidget {
           color: const Color.fromARGB(255, 62, 182, 238),
         ),
         child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: loading
+              ? const SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                )
+              : Text(
+                  text,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     );

@@ -5,6 +5,8 @@ import 'package:notes_app_12/components/button.dart';
 import 'package:notes_app_12/components/text_field_for_sheet.dart';
 import 'package:notes_app_12/cubits/add_note/cubit/add_note_cubit.dart';
 
+import '../models/note_model.dart';
+
 class AddNote extends StatefulWidget {
   const AddNote({super.key});
 
@@ -24,23 +26,24 @@ class _AddNoteState extends State<AddNote> {
   @override
   Widget build(BuildContext context) {
     // SingleChildScrollView => make all child shirnk on the parent and we can not use spacer inside it
-    return SingleChildScrollView(
-      child: BlocProvider(
-        create: (context) => AddNoteCubit(),
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is AddNoteLoading) {
-              loading = true;
-            } else if (state is AddNoteFailure) {
-              loading = false;
-            } else if (state is AddNoteSuccess) {
-              loading = false;
-              Navigator.pop(context);
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: loading,
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteLoading) {
+            loading = true;
+          } else if (state is AddNoteFailure) {
+            loading = false;
+          } else if (state is AddNoteSuccess) {
+            loading = false;
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          // AbsorbPointer => if it take true it prevent us to use any thing in the screen
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading ? true : false,
+            child: SingleChildScrollView(
               child: Form(
                 key: formKey,
                 autovalidateMode: autoValidateMode,
@@ -66,17 +69,31 @@ class _AddNoteState extends State<AddNote> {
                     const SizedBox(
                       height: 30,
                     ),
-                    CunstomButton(
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          formKey.currentState!.save();
-                        } else {
-                          // AutovalidateMode.always => while user input data this validate it char by char
-                          autoValidateMode = AutovalidateMode.always;
-                          setState(() {});
-                        }
+                    BlocBuilder<AddNoteCubit, AddNoteState>(
+                      builder: (context, state) {
+                        return CunstomButton(
+                          loading: state is AddNoteLoading ? true : false,
+                          onTap: () {
+                            if (formKey.currentState!.validate()) {
+                              //Saved Data
+                              formKey.currentState!.save();
+
+                              NoteModel noteModel = NoteModel(
+                                  title: title!,
+                                  content: subTitle!,
+                                  date:
+                                      "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}");
+                              BlocProvider.of<AddNoteCubit>(context)
+                                  .addNote(noteModel);
+                            } else {
+                              // AutovalidateMode.always => while user input data this validate it char by char
+                              autoValidateMode = AutovalidateMode.always;
+                              setState(() {});
+                            }
+                          },
+                          text: "Add",
+                        );
                       },
-                      text: "Add",
                     ),
                     const SizedBox(
                       height: 50,
@@ -84,9 +101,9 @@ class _AddNoteState extends State<AddNote> {
                   ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
