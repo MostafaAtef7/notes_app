@@ -23,8 +23,8 @@ class NoteApp extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       routes: {
-        'mainView': (context) => MainView(),
-        'editView': (context) => EditView(),
+        'mainView': (context) => const MainView(),
+        'editView': (context) => const EditView(),
       },
       initialRoute: 'mainView',
     );
