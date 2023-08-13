@@ -15,6 +15,8 @@ class MainView extends StatelessWidget {
         onPressed: () {
           //display bottom sheet that float on scaffold
           showModalBottomSheet(
+              // isScrollControlled => make bottom sheet move to dynamic height
+              isScrollControlled: true,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),

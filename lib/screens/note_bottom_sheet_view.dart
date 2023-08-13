@@ -43,62 +43,67 @@ class _AddNoteState extends State<AddNote> {
           // AbsorbPointer => if it take true it prevent us to use any thing in the screen
           return AbsorbPointer(
             absorbing: state is AddNoteLoading ? true : false,
-            child: SingleChildScrollView(
-              child: Form(
-                key: formKey,
-                autovalidateMode: autoValidateMode,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    TextFieldSheet(
-                      onSaved: (data) {
-                        title = data;
-                      },
-                      hint: "Title",
-                      maxLines: 1,
-                    ),
-                    TextFieldSheet(
-                      onSaved: (data) {
-                        subTitle = data;
-                      },
-                      hint: "Content",
-                      maxLines: 5,
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    BlocBuilder<AddNoteCubit, AddNoteState>(
-                      builder: (context, state) {
-                        return CunstomButton(
-                          loading: state is AddNoteLoading ? true : false,
-                          onTap: () {
-                            if (formKey.currentState!.validate()) {
-                              //Saved Data
-                              formKey.currentState!.save();
+            child: Padding(
+              // viewInsets => has data of keyboard
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: SingleChildScrollView(
+                child: Form(
+                  key: formKey,
+                  autovalidateMode: autoValidateMode,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      TextFieldSheet(
+                        onSaved: (data) {
+                          title = data;
+                        },
+                        hint: "Title",
+                        maxLines: 1,
+                      ),
+                      TextFieldSheet(
+                        onSaved: (data) {
+                          subTitle = data;
+                        },
+                        hint: "Content",
+                        maxLines: 5,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      BlocBuilder<AddNoteCubit, AddNoteState>(
+                        builder: (context, state) {
+                          return CunstomButton(
+                            loading: state is AddNoteLoading ? true : false,
+                            onTap: () {
+                              if (formKey.currentState!.validate()) {
+                                //Saved Data
+                                formKey.currentState!.save();
 
-                              NoteModel noteModel = NoteModel(
-                                  title: title!,
-                                  content: subTitle!,
-                                  date:
-                                      "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}");
-                              BlocProvider.of<AddNoteCubit>(context)
-                                  .addNote(noteModel);
-                            } else {
-                              // AutovalidateMode.always => while user input data this validate it char by char
-                              autoValidateMode = AutovalidateMode.always;
-                              setState(() {});
-                            }
-                          },
-                          text: "Add",
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                  ],
+                                NoteModel noteModel = NoteModel(
+                                    title: title!,
+                                    content: subTitle!,
+                                    date:
+                                        "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}");
+                                BlocProvider.of<AddNoteCubit>(context)
+                                    .addNote(noteModel);
+                              } else {
+                                // AutovalidateMode.always => while user input data this validate it char by char
+                                autoValidateMode = AutovalidateMode.always;
+                                setState(() {});
+                              }
+                            },
+                            text: "Add",
+                          );
+                        },
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
