@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_12/components/button.dart';
 import 'package:notes_app_12/components/text_field_for_sheet.dart';
-
+import 'package:notes_app_12/cubits/notes/notes_cubit.dart';
 
 import '../cubits/add_note/add_note_cubit.dart';
 import '../models/note_model.dart';
@@ -22,7 +22,7 @@ class _AddNoteState extends State<AddNote> {
   /* any StatelessWidget must not change so if we create variable not final we must
     put it in StatefulWidget */
   String? title, subTitle;
-  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     // SingleChildScrollView => make all child shirnk on the parent and we can not use spacer inside it
@@ -30,12 +30,8 @@ class _AddNoteState extends State<AddNote> {
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-          if (state is AddNoteLoading) {
-            loading = true;
-          } else if (state is AddNoteFailure) {
-            loading = false;
-          } else if (state is AddNoteSuccess) {
-            loading = false;
+          if (state is AddNoteSuccess) {
+            BlocProvider.of<NotesCubit>(context).fetchAllnotes();
             Navigator.pop(context);
           }
         },
