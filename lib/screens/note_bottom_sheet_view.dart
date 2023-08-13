@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app_12/components/button.dart';
 import 'package:notes_app_12/components/text_field_for_sheet.dart';
-import 'package:notes_app_12/cubits/add_note/cubit/add_note_cubit.dart';
 
+
+import '../cubits/add_note/add_note_cubit.dart';
 import '../models/note_model.dart';
 
 class AddNote extends StatefulWidget {
