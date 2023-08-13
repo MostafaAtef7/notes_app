@@ -17,6 +17,7 @@ class TextFieldSheet extends StatelessWidget {
           if (data?.isEmpty ?? true) {
             return "Field is Required";
           }
+          return null;
         },
         maxLines: maxLines,
         cursorColor: const Color.fromARGB(255, 62, 182, 238),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../components/add_note_button_sheet.dart';
+import 'note_bottom_sheet_view.dart';
 
 import '../components/item_list.dart';
-import '../components/note_appbar.dart';
+import '../components/appbar.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
