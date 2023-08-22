@@ -23,7 +23,6 @@ class _AddNoteState extends State<AddNote> {
   /* any StatelessWidget must not change so if we create variable not final we must
     put it in StatefulWidget */
   String? title, subTitle;
-  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +71,11 @@ class _AddNoteState extends State<AddNote> {
                         height: 30,
                       ),
                       const SizedBox(
-                        height: 100,
+                        height: 60,
                         child: ColorsList(),
+                      ),
+                      const SizedBox(
+                        height: 15,
                       ),
                       BlocBuilder<AddNoteCubit, AddNoteState>(
                         builder: (context, state) {
@@ -89,7 +91,9 @@ class _AddNoteState extends State<AddNote> {
                                   content: subTitle!,
                                   date:
                                       "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
-                                  color: color!,
+                                  color: BlocProvider.of<AddNoteCubit>(context)
+                                      .color
+                                      .value,
                                 );
                                 BlocProvider.of<AddNoteCubit>(context)
                                     .addNote(noteModel);

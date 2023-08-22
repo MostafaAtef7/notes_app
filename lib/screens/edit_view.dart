@@ -4,6 +4,7 @@ import 'package:notes_app_12/components/appbar.dart';
 import 'package:notes_app_12/components/text_field_for_sheet.dart';
 import 'package:notes_app_12/cubits/notes/notes_cubit.dart';
 import 'package:notes_app_12/models/note_model.dart';
+import '../components/edit_note_color_list.dart';
 
 class EditView extends StatefulWidget {
   const EditView({super.key, required this.note});
@@ -47,6 +48,13 @@ class _EditViewState extends State<EditView> {
             hint: "Content",
             maxLines: 5,
           ),
+          const SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            height: 60,
+            child: EditNoteColorList(note: widget.note,),
+          )
         ],
       ),
     );

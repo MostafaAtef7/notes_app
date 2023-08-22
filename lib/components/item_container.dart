@@ -24,7 +24,7 @@ class ItemContainer extends StatelessWidget {
         padding:
             const EdgeInsets.only(right: 15, left: 15, top: 20, bottom: 20),
         decoration: BoxDecoration(
-          color: note.color,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [

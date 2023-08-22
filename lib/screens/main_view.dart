@@ -47,6 +47,7 @@ class _MainViewState extends State<MainView> {
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
       ),
+      
       body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(

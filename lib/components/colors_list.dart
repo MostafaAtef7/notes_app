@@ -1,5 +1,38 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app_12/cubits/add_note/add_note_cubit.dart';
+
 import 'package:notes_app_12/models/note_model.dart';
+
+import '../constants.dart';
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({
+    Key? key,
+    required this.isActive,
+    required this.color,
+  }) : super(key: key);
+  final bool isActive;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return isActive
+        ? CircleAvatar(
+            radius: 25,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: color,
+              radius: 23,
+            ),
+          )
+        : CircleAvatar(
+            backgroundColor: color,
+            radius: 25,
+          );
+  }
+}
 
 class ColorsList extends StatefulWidget {
   const ColorsList({super.key});
@@ -9,34 +42,28 @@ class ColorsList extends StatefulWidget {
 }
 
 class _ColorsListState extends State<ColorsList> {
-  final List<Color> color = const [
-    Colors.yellow,
-    Color.fromARGB(255, 99, 255, 107),
-    Color.fromARGB(255, 253, 129, 107),
-    Color.fromRGBO(59, 255, 229, 1),
-    Color.fromARGB(255, 145, 68, 125),
-  ];
-
-  NoteModel? note;
+  int state = 0;
+  
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: color.length,
+        itemCount: kColors.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 20, right: 8, left: 4),
-            child: GestureDetector(
+          return GestureDetector(
               onTap: () {
-                note!.color = color[index] ?? Colors.yellow;
+                state = index;
+                BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
+                setState(() {});
               },
-              child: CircleAvatar(
-                backgroundColor: color[index],
-                radius: 50,
-              ),
-            ),
-          );
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: ColorItem(
+                  color: kColors[index],
+                  isActive: state == index ? true : false,
+                ),
+              ));
         });
   }
 }

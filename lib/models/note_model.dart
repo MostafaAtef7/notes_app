@@ -17,8 +17,9 @@ class NoteModel extends HiveObject {
   @HiveField(2)
   final String date;
   @HiveField(3)
-  Color color;
-  NoteModel({required this.color, required this.title, required this.content, required this.date});
+  int color;
+  NoteModel({required this.title, required this.content, required this.date, required this.color,
+  });
 }
 
 /* after all this we type this line in terminal to generate Adapter type
