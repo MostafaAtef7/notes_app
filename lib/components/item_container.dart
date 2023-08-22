@@ -5,9 +5,9 @@ import 'package:notes_app_12/models/note_model.dart';
 import 'package:notes_app_12/screens/edit_view.dart';
 
 class ItemContainer extends StatelessWidget {
-  const ItemContainer({required this.color, super.key, required this.note});
+  const ItemContainer({super.key, required this.note});
 
-  final Color? color;
+
   final NoteModel note;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ItemContainer extends StatelessWidget {
         padding:
             const EdgeInsets.only(right: 15, left: 15, top: 20, bottom: 20),
         decoration: BoxDecoration(
-          color: color,
+          color: note.color,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [

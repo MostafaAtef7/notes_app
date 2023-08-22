@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CunstomButton extends StatelessWidget {
-  const CunstomButton(
+class CustomButton extends StatelessWidget {
+  const CustomButton(
       {super.key, required this.text, this.onTap, this.loading = false});
   final String text;
   final void Function()? onTap;

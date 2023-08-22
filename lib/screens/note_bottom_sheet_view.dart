@@ -4,6 +4,7 @@ import 'package:notes_app_12/components/button.dart';
 import 'package:notes_app_12/components/text_field_for_sheet.dart';
 import 'package:notes_app_12/cubits/notes/notes_cubit.dart';
 
+import '../components/colors_list.dart';
 import '../cubits/add_note/add_note_cubit.dart';
 import '../models/note_model.dart';
 
@@ -22,10 +23,10 @@ class _AddNoteState extends State<AddNote> {
   /* any StatelessWidget must not change so if we create variable not final we must
     put it in StatefulWidget */
   String? title, subTitle;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
-    // SingleChildScrollView => make all child shirnk on the parent and we can not use spacer inside it
     return BlocProvider(
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
@@ -43,6 +44,7 @@ class _AddNoteState extends State<AddNote> {
               // viewInsets => has data of keyboard
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
+              // SingleChildScrollView => make all child shirnk on the parent and we can not use spacer inside it
               child: SingleChildScrollView(
                 child: Form(
                   key: formKey,
@@ -69,9 +71,13 @@ class _AddNoteState extends State<AddNote> {
                       const SizedBox(
                         height: 30,
                       ),
+                      const SizedBox(
+                        height: 100,
+                        child: ColorsList(),
+                      ),
                       BlocBuilder<AddNoteCubit, AddNoteState>(
                         builder: (context, state) {
-                          return CunstomButton(
+                          return CustomButton(
                             loading: state is AddNoteLoading ? true : false,
                             onTap: () {
                               if (formKey.currentState!.validate()) {
@@ -79,10 +85,12 @@ class _AddNoteState extends State<AddNote> {
                                 formKey.currentState!.save();
 
                                 NoteModel noteModel = NoteModel(
-                                    title: title!,
-                                    content: subTitle!,
-                                    date:
-                                        "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}");
+                                  title: title!,
+                                  content: subTitle!,
+                                  date:
+                                      "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
+                                  color: color!,
+                                );
                                 BlocProvider.of<AddNoteCubit>(context)
                                     .addNote(noteModel);
                               } else {
